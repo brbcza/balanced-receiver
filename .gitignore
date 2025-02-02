@@ -30,6 +30,9 @@ fp-info-cache
 *.xml
 *.csv
 
+# Generate fabrication data
+outputs
+
 # For Python development scripts
 # Format documentation: https://github.com/github/gitignore/blob/main/Python.gitignore
 
