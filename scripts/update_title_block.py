@@ -34,7 +34,19 @@ def modify_title_block(target: str):
     return target
 
 
+def print_title_block():
+    print("Modifing title block with following arguments:")
+    print(f"\tTITLE_BLOCK_AUTHOR:             {TITLE_BLOCK_AUTHOR}")
+    print(f"\tTITLE_BLOCK_BASE_REPOSITORY:    {TITLE_BLOCK_BASE_REPOSITORY}")
+    print(f"\tTITLE_BLOCK_REPOSITORY:         {TITLE_BLOCK_REPOSITORY}")
+    print(f"\tTITLE_BLOCK_PROJECT_NAME:       {TITLE_BLOCK_PROJECT_NAME}")
+    print(f"\tTITLE_BLOCK_PROJECT_NAME_SHORT: {TITLE_BLOCK_PROJECT_NAME_SHORT}")
+    print(f"\tTITLE_BLOCK_DATE:               {TITLE_BLOCK_DATE}")
+    print(f"\tTITLE_BLOCK_REVISION:           {TITLE_BLOCK_REVISION}")
+
+
 def main():
+    print_title_block()
     for schema_file in glob("*.kicad_sch", root_dir=SRC_PATH):
         print(f"Modifing title block for schematic {schema_file}")
         with open(path.join(SRC_PATH, schema_file), "r+") as f:

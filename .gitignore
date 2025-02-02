@@ -31,6 +31,8 @@ fp-info-cache
 *.csv
 
 # Generate fabrication data
+gerber
+gerbers.zip
 outputs
 
 # For Python development scripts

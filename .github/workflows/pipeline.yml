@@ -4,23 +4,19 @@ on:
   push:
     branches:
         - '**'
-    paths: 
-        - '*.kicad_sch'
-        - '*.kicad_pcb'
+    #paths: 
+    #    - '*.kicad_sch'
+    #    - '*.kicad_pcb'
 
 jobs:
   run-drc:
     runs-on: ubuntu-latest
     name: Run Design Rule Checking
-
+    env:
+      BOARD_NAME: balanced-receiver
     steps:
       - name: Check out code
         uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.13.1
 
       - name: Install Task
         uses: arduino/setup-task@v2
@@ -30,16 +26,15 @@ jobs:
 
       - name: Modify title block
         env:
-          TITLE_BLOCK_AUTHOR: "${{ github.event.repository.full_name }}"
-          TITLE_BLOCK_REVISION: "v0.0"
-          TITLE_BLOCK_DATE: $(date +'%Y.%m.%d')
-          TITLE_BLOCK_BASE_REPOSITORY: "github.com/${{ github.repository_owner }}"
-          TITLE_BLOCK_REPOSITORY: "${{ github.server_url }}/${{github.repository}}"
-          TITLE_BLOCK_PROJECT_NAME: "${{ vars.PROJECT_NAME }}"
-          TITLE_BLOCK_PROJECT_NAME_SHORT: "${{ vars.PROJECT_NAME_SHORT }}"
+          TITLE_BLOCK_AUTHOR: ${{ vars.PROJECT_AUTHOR }}
+          TITLE_BLOCK_REVISION: ${{ github.sha }}
+          TITLE_BLOCK_BASE_REPOSITORY: github.com/${{ github.repository_owner }}
+          TITLE_BLOCK_REPOSITORY: ${{ github.server_url }}/${{github.repository}}
+          TITLE_BLOCK_PROJECT_NAME: ${{ vars.PROJECT_NAME }}
+          TITLE_BLOCK_PROJECT_NAME_SHORT: ${{ vars.PROJECT_NAME_SHORT }}
         run: |
-          task modify-title-block
+          TITLE_BLOCK_DATE=$(date +'%Y.%m.%d') python3 scripts/update_title_block.py 
 
       - name: Run tests
         run: |
-          task run-drc
+          docker run -v $(pwd):/kikit yaqwsx/kikit drc run "${BOARD_NAME}.kicad_pcb"
