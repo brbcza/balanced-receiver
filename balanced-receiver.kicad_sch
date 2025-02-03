@@ -5,11 +5,13 @@
 	(uuid "6a415962-4bc6-46b3-a4a9-4a4125d0fb6a")
 	(paper "A4")
 	(title_block
-		(title "Balanced receiver")
-		(date "2025.02.01")
-		(rev "v1.0")
-		(company "Filip Tefr")
-		(comment 1 "https://github.com/brbcza/balanced-receiver")
+		(title "${TITLE_BLOCK_PROJECT_NAME}")
+		(date "${TITLE_BLOCK_DATE}")
+		(rev "${TITLE_BLOCK_REVISION}")
+		(company "${TITLE_BLOCK_AUTHOR}")
+		(comment 1 "${TITLE_BLOCK_REPOSITORY}")
+		(comment 8 "${TITLE_BLOCK_PROJECT_NAME_SHORT}")
+		(comment 9 "${TITLE_BLOCK_BASE_REPOSITORY}")
 	)
 	(lib_symbols
 		(symbol "Connector:Barrel_Jack_Switch"
@@ -5367,6 +5369,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 142.24 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 142.24 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "c1cd634f-cf35-4ff1-8a73-24c1106a7b19")
 		)
@@ -5430,6 +5450,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 43.18 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 43.18 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 43.18 99.06 0)
 			(effects
 				(font
@@ -5566,6 +5604,24 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 74.93 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 74.93 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 74.93 52.07 0)
 			(effects
 				(font
@@ -5778,6 +5834,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 200.66 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 200.66 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "a13109ba-03a8-48ce-bd14-bc3a325655c8")
 		)
@@ -5978,6 +6052,24 @@
 			)
 		)
 		(property "LCSC" "C5188442"
+			(at 245.11 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 245.11 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 245.11 132.08 0)
 			(effects
 				(font
@@ -6198,6 +6290,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 73.66 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 73.66 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "6"
 			(uuid "ae865c43-731d-412f-a15e-6c0d53a12fe1")
 		)
@@ -6275,6 +6385,24 @@
 			)
 		)
 		(property "Description" "Polarized capacitor"
+			(at 154.94 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 154.94 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 154.94 39.37 0)
 			(effects
 				(font
@@ -6412,6 +6540,24 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 44.45 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 44.45 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 44.45 129.54 0)
 			(effects
 				(font
@@ -6618,6 +6764,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 246.38 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 246.38 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "facc27fd-fafc-4811-bbe2-288459eef1c7")
 		)
@@ -6688,6 +6852,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 36.83 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 36.83 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "d2fd5f59-64ae-4d9b-9929-9515e73b6e98")
 		)
@@ -6749,6 +6931,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 64.77 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 64.77 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 64.77 128.27 0)
 			(effects
 				(font
@@ -6835,6 +7035,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 166.37 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 166.37 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "5b35e650-d876-48eb-ac7d-651bc3121fcf")
 		)
@@ -6897,6 +7115,24 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 113.03 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 113.03 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 113.03 101.6 0)
 			(effects
 				(font
@@ -7036,6 +7272,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 125.73 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 125.73 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "be6b4da8-af87-4ba9-9f96-37cb7b73ce63")
 		)
@@ -7097,6 +7351,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 64.77 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 64.77 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 64.77 87.63 0)
 			(effects
 				(font
@@ -7242,6 +7514,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 49.53 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 49.53 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "d0a5b339-e913-4992-baf6-d576fc1d50e2")
 		)
@@ -7304,6 +7594,24 @@
 			)
 		)
 		(property "Description" "RED LED"
+			(at 237.49 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 237.49 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 237.49 45.72 0)
 			(effects
 				(font
@@ -7516,6 +7824,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 44.45 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 44.45 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "82674f15-e6d4-4237-9a75-5b5deeaa6746")
 		)
@@ -7574,6 +7900,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 36.83 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 36.83 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 36.83 107.95 0)
 			(effects
 				(font
@@ -7715,6 +8059,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 137.16 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 137.16 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "8a5fef65-1b9a-4829-b416-46a1717bc157")
 		)
@@ -7778,6 +8140,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 43.18 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 43.18 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 43.18 116.84 0)
 			(effects
 				(font
@@ -7922,6 +8302,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 247.65 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 247.65 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "1d9dfd89-1bbc-4e8d-b3cf-b19c4ecd9320")
 		)
@@ -8001,6 +8399,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 93.98 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 93.98 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "17239a35-51d6-44c1-9553-7160593ea4a7")
 		)
@@ -8063,6 +8479,24 @@
 			)
 		)
 		(property "Description" "RED LED"
+			(at 247.65 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 247.65 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 247.65 45.72 0)
 			(effects
 				(font
@@ -8273,6 +8707,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 189.23 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 189.23 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "d5565c80-791d-4303-a6e2-3cee3b11be15")
 		)
@@ -8466,6 +8918,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 137.16 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 137.16 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 137.16 59.69 0)
 			(effects
 				(font
@@ -8676,6 +9146,24 @@
 			)
 		)
 		(property "LCSC" "C3032935"
+			(at 109.22 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 109.22 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 109.22 40.64 0)
 			(effects
 				(font
@@ -8904,6 +9392,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 184.15 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 184.15 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "a10e03a8-e246-4cdf-8788-daeb6db897cd")
 		)
@@ -8980,6 +9486,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 158.75 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 158.75 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "45b4d9a6-b374-49f0-9af5-7a7acb2ea261")
 		)
@@ -9042,6 +9566,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 62.23 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 62.23 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 62.23 39.37 0)
 			(effects
 				(font
@@ -9325,6 +9867,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 81.28 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 81.28 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "496f13cf-3167-4f4c-ba02-0a5d0d5754ed")
 		)
@@ -9390,6 +9950,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 88.9 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 88.9 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 88.9 52.07 0)
 			(effects
 				(font
@@ -9468,6 +10046,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 74.93 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 74.93 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "77952c8c-50e9-4680-b83d-c0f24213e376")
 		)
@@ -9530,6 +10126,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 153.67 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 153.67 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 153.67 109.22 0)
 			(effects
 				(font
@@ -9807,6 +10421,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 237.49 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 237.49 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "1ee51461-0e73-4677-a4cf-23d2466faade")
 		)
@@ -9886,6 +10518,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 245.11 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 245.11 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "8721fd6e-52a7-4a0b-b8b7-a999e8bf7137")
 		)
@@ -9946,6 +10596,24 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 234.95 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 234.95 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 234.95 102.87 0)
 			(effects
 				(font
@@ -10149,6 +10817,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 140.97 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 140.97 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 140.97 109.22 0)
 			(effects
 				(font
@@ -10367,6 +11053,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 146.05 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 146.05 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "1f37abe9-fa45-4d7a-8dd9-dab9f0465992")
 		)
@@ -10432,6 +11136,24 @@
 			)
 		)
 		(property "Description" "Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 245.11 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 245.11 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 245.11 116.84 0)
 			(effects
 				(font
@@ -10585,6 +11307,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 175.26 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 175.26 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "2bddc0c8-0a97-4fef-a76f-f7217a7bb7c5")
 		)
@@ -10674,6 +11414,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 40.64 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 40.64 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "74341506-2a14-4028-8009-7ccb2268182e")
 		)
@@ -10751,6 +11509,24 @@
 			)
 		)
 		(property "LCSC" "C5188442"
+			(at 245.11 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 245.11 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 245.11 109.22 0)
 			(effects
 				(font
@@ -10959,6 +11735,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 137.16 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 137.16 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "002d3459-3dc5-4d04-b851-6e9a4909f173")
 		)
@@ -11021,6 +11815,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 167.64 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 167.64 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 167.64 39.37 0)
 			(effects
 				(font
@@ -11165,6 +11977,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 176.53 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 176.53 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "f5156f40-50b8-4612-aa81-6cc6a0d45d32")
 		)
@@ -11232,6 +12062,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 100.33 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 100.33 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3a3f322f-a413-4023-8154-dc55cf850601")
 		)
@@ -11291,6 +12139,24 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 119.38 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 119.38 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 119.38 53.34 0)
 			(effects
 				(font
@@ -11434,6 +12300,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" ""
+			(at 97.79 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 97.79 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "a7c3f1b8-ffa9-445c-81e7-0ac81b6051df")
 		)
@@ -11495,6 +12379,24 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 104.14 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 104.14 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 104.14 114.3 0)
 			(effects
 				(font
@@ -11630,6 +12532,24 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 146.05 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 146.05 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
 			(at 146.05 172.72 0)
 			(effects
 				(font

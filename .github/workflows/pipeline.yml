@@ -1,0 +1,47 @@
+name: Run PCB tests
+
+on:
+  push:
+    branches:
+        - '**'
+    paths: 
+        - '*.kicad_pro'
+        - '*.kicad_sch'
+        - '*.kicad_pcb'
+  pull_request:
+    branches: 
+        - '**' 
+
+jobs:
+  run-drc:
+    runs-on: ubuntu-latest
+    name: Design Rule Checking
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Task
+        uses: arduino/setup-task@v2
+        with:
+          version: 3.x
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Modify title block
+        env:
+          TITLE_BLOCK_AUTHOR: ${{ vars.PROJECT_AUTHOR }}
+          TITLE_BLOCK_REVISION: ${{ github.sha }}
+          TITLE_BLOCK_BASE_REPOSITORY: github.com/${{ github.repository_owner }}
+          TITLE_BLOCK_REPOSITORY: ${{ github.server_url }}/${{github.repository}}
+          TITLE_BLOCK_PROJECT_NAME: ${{ vars.PROJECT_NAME }}
+          TITLE_BLOCK_PROJECT_NAME_SHORT: ${{ vars.PROJECT_NAME_SHORT }}
+        run: |
+          TITLE_BLOCK_DATE=$(date +'%Y.%m.%d') \
+            python3 scripts/update_title_block.py 
+
+      - name: Run tests
+        run: |
+          find . -type f -name "*.kicad_pcb" | sed 's|^\./||' | while read BOARD_NAME; do
+            echo "Running DRC test for \"${BOARD_NAME}\""
+            docker run -v $(pwd):/kikit yaqwsx/kikit drc run "${BOARD_NAME}"
+          done
+        
