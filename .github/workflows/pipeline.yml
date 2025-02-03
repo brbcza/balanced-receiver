@@ -5,6 +5,7 @@ on:
     branches:
         - '**'
     paths: 
+        - '*.kicad_pro'
         - '*.kicad_sch'
         - '*.kicad_pcb'
   pull_request:
@@ -14,7 +15,7 @@ on:
 jobs:
   run-drc:
     runs-on: ubuntu-latest
-    name: Run Design Rule Checking
+    name: Design Rule Checking
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -40,7 +41,7 @@ jobs:
       - name: Run tests
         run: |
           find . -type f -name "*.kicad_pcb" | while read file; do
-            echo "Running DRC test for \"$file\""
+            echo "Running DRC test for \"$file"
             docker run -v $(pwd):/kikit yaqwsx/kikit drc run "$file"
           done
         
