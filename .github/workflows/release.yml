@@ -3,7 +3,8 @@ name: Create a release
 on:
   push:
     branches:
-      - '**'
+      - 'main'
+      - 'devel'
     tags:
       - 'v*'
 
@@ -50,7 +51,7 @@ jobs:
           mkdir -p ${OUTPUT_DIR}
           find . -type f -name "*.kicad_sch" | sed 's|^\./||' | while read BOARD_NAME; do
             echo "Generating documentation for \"${BOARD_NAME}\""
-            BOARD_NAME_BASE=$(basename $BOARD_NAME)
+            BOARD_NAME_BASE=${BOARD_NAME%.*}
             docker run -v ${GITHUB_WORKSPACE}:/kikit --entrypoint kicad-cli yaqwsx/kikit \
               sch export pdf --output "/kikit/${OUTPUT_DIR}/${BOARD_NAME_BASE}_${VERSION}.pdf" "/kikit/${BOARD_NAME}"    
             docker run -v ${GITHUB_WORKSPACE}:/kikit --entrypoint kicad-cli yaqwsx/kikit \
@@ -64,7 +65,7 @@ jobs:
         run: |
           find . -type f -name "*.kicad_pcb" | sed 's|^\./||' | while read BOARD_NAME; do
             echo "Generating gerber files for \"${BOARD_NAME}\""
-            BOARD_NAME_BASE=$(basename $BOARD_NAME)
+            BOARD_NAME_BASE=${BOARD_NAME%.*}
             docker run -v ${GITHUB_WORKSPACE}:/kikit yaqwsx/kikit fab ${FABHOUSE} --no-drc "${BOARD_NAME}" .
             mv gerbers.zip ${OUTPUT_DIR}/${BOARD_NAME_BASE}_gerbers_${VERSION}.zip
           done
@@ -82,6 +83,7 @@ jobs:
     name: Create a release
     runs-on: ubuntu-24.04
     needs: generate-build-artifacts
+    if: startsWith(github.event.ref, 'refs/tags/v')
     permissions: write-all
     env:
       OUTPUT_DIR: outputs
