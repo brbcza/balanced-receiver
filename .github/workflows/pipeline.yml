@@ -40,8 +40,8 @@ jobs:
 
       - name: Run tests
         run: |
-          find . -type f -name "*.kicad_pcb" | while read file; do
-            echo "Running DRC test for \"$file"
-            docker run -v $(pwd):/kikit yaqwsx/kikit drc run "$file"
+          find . -type f -name "*.kicad_sch" | sed 's|^\./||' | while read BOARD_NAME; do
+            echo "Running DRC test for \"${BOARD_NAME}\""
+            docker run -v $(pwd):/kikit yaqwsx/kikit drc run "${BOARD_NAME}"
           done
         

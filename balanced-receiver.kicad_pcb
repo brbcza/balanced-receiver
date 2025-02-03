@@ -13401,7 +13401,7 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "${COMMENT8}\n${COMMENT9}\n${REVISION}  ${CURRENT_DATE}\n"
+	(gr_text "${COMMENT8}\n${COMMENT9}\n${REVISION} ${ISSUE_DATE}\n"
 		(at 80.5325 53.44 0)
 		(layer "F.SilkS" knockout)
 		(uuid "5a869b85-cc72-4e4c-b676-a1532e9dcc77")
