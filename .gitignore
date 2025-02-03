@@ -30,6 +30,11 @@ fp-info-cache
 *.xml
 *.csv
 
+# Generate fabrication data and documentation
+gerber
+gerbers.zip
+outputs
+
 # For Python development scripts
 # Format documentation: https://github.com/github/gitignore/blob/main/Python.gitignore
 
