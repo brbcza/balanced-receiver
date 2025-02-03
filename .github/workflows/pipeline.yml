@@ -4,18 +4,20 @@ on:
   push:
     branches:
         - '**'
-    #paths: 
-    #    - '*.kicad_sch'
-    #    - '*.kicad_pcb'
+    paths: 
+        - '*.kicad_pro'
+        - '*.kicad_sch'
+        - '*.kicad_pcb'
+  pull_request:
+    branches: 
+        - '**' 
 
 jobs:
   run-drc:
     runs-on: ubuntu-latest
-    name: Run Design Rule Checking
-    env:
-      BOARD_NAME: balanced-receiver
+    name: Design Rule Checking
     steps:
-      - name: Check out code
+      - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Install Task
@@ -33,8 +35,13 @@ jobs:
           TITLE_BLOCK_PROJECT_NAME: ${{ vars.PROJECT_NAME }}
           TITLE_BLOCK_PROJECT_NAME_SHORT: ${{ vars.PROJECT_NAME_SHORT }}
         run: |
-          TITLE_BLOCK_DATE=$(date +'%Y.%m.%d') python3 scripts/update_title_block.py 
+          TITLE_BLOCK_DATE=$(date +'%Y.%m.%d') \
+            python3 scripts/update_title_block.py 
 
       - name: Run tests
         run: |
-          docker run -v $(pwd):/kikit yaqwsx/kikit drc run "${BOARD_NAME}.kicad_pcb"
+          find . -type f -name "*.kicad_pcb" | sed 's|^\./||' | while read BOARD_NAME; do
+            echo "Running DRC test for \"${BOARD_NAME}\""
+            docker run -v $(pwd):/kikit yaqwsx/kikit drc run "${BOARD_NAME}"
+          done
+        

@@ -1,18 +1,18 @@
-name: Create release
+name: Create a release
 
 on:
   push:
     branches:
-        - '**'
+      - 'master'
+      - 'devel'
     tags:
       - 'v*'
 
 jobs:
-  generate-release-doc:
+  generate-build-artifacts:
     runs-on: ubuntu-latest
-    name: Generate release documentation and gerbers
+    name: Generate release artifacts
     env:
-      BOARD_NAME: balanced-receiver
       OUTPUT_DIR: outputs
     steps:
       - name: Check out code
@@ -24,35 +24,87 @@ jobs:
           version: 3.x
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Generate project variables
+        id: project
+        run: |
+            VERSION=$(git describe --tags --abbrev=0 2>/dev/null || git rev-parse --short HEAD)
+            PROJECT_NAME_NS=$(echo "${{ vars.PROJECT_NAME }}" | tr "[:upper:]" "[:lower:]" | tr " " "_")
+            echo "VERSION=${VERSION}" >> $GITHUB_OUTPUT
+            echo "PROJECT_NAME_NS=${PROJECT_NAME_NS}" >> $GITHUB_OUTPUT
+
       - name: Modify title block
         env:
           TITLE_BLOCK_AUTHOR: ${{ vars.PROJECT_AUTHOR }}
-          TITLE_BLOCK_REVISION: ${{ github.sha }}
+          TITLE_BLOCK_REVISION: ${{ steps.project.outputs.VERSION }}
           TITLE_BLOCK_BASE_REPOSITORY: github.com/${{ github.repository_owner }}
           TITLE_BLOCK_REPOSITORY: ${{ github.server_url }}/${{github.repository}}
           TITLE_BLOCK_PROJECT_NAME: ${{ vars.PROJECT_NAME }}
           TITLE_BLOCK_PROJECT_NAME_SHORT: ${{ vars.PROJECT_NAME_SHORT }}
         run: |
-          TITLE_BLOCK_DATE=$(date +'%Y.%m.%d') python3 scripts/update_title_block.py 
+          TITLE_BLOCK_DATE=$(date +'%Y.%m.%d') \
+            python3 scripts/update_title_block.py 
 
       - name: Generate release documentation
+        env:
+          VERSION: ${{ steps.project.outputs.VERSION }}
         run: |
           mkdir -p ${OUTPUT_DIR}
-          docker run -v ${GITHUB_WORKSPACE}:/kikit --entrypoint kicad-cli yaqwsx/kikit \
-            sch export pdf --output "/kikit/${OUTPUT_DIR}/${BOARD_NAME}.pdf" "/kikit/${BOARD_NAME}.kicad_sch"    
-          docker run -v ${GITHUB_WORKSPACE}:/kikit --entrypoint kicad-cli yaqwsx/kikit \
-            sch export pdf --output "/kikit/${OUTPUT_DIR}/${BOARD_NAME}_bom.csv" "/kikit/${BOARD_NAME}.kicad_sch"
+          find . -type f -name "*.kicad_sch" | sed 's|^\./||' | while read BOARD_NAME; do
+            echo "Generating documentation for \"${BOARD_NAME}\""
+            BOARD_NAME_BASE=${BOARD_NAME%.*}
+            docker run -v ${GITHUB_WORKSPACE}:/kikit --entrypoint kicad-cli yaqwsx/kikit \
+              sch export pdf --output "/kikit/${OUTPUT_DIR}/${BOARD_NAME_BASE}_${VERSION}.pdf" "/kikit/${BOARD_NAME}"    
+            docker run -v ${GITHUB_WORKSPACE}:/kikit --entrypoint kicad-cli yaqwsx/kikit \
+              sch export pdf --output "/kikit/${OUTPUT_DIR}/${BOARD_NAME_BASE}_bom_${VERSION}.csv" "/kikit/${BOARD_NAME}"
+          done
 
       - name: Generate gerber files
         env:
           FABHOUSE: jlcpcb
+          VERSION: ${{ steps.project.outputs.VERSION }}
         run: |
-          docker run -v ${GITHUB_WORKSPACE}:/kikit yaqwsx/kikit fab ${FABHOUSE} --no-drc "${BOARD_NAME}.kicad_pcb" .
-          mv gerbers.zip ${OUTPUT_DIR}/${BOARD_NAME}_gerbers.zip
+          find . -type f -name "*.kicad_pcb" | sed 's|^\./||' | while read BOARD_NAME; do
+            echo "Generating gerber files for \"${BOARD_NAME}\""
+            BOARD_NAME_BASE=${BOARD_NAME%.*}
+            docker run -v ${GITHUB_WORKSPACE}:/kikit yaqwsx/kikit fab ${FABHOUSE} --no-drc "${BOARD_NAME}" .
+            mv gerbers.zip ${OUTPUT_DIR}/${BOARD_NAME_BASE}_gerbers_${VERSION}.zip
+          done
 
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
+        env:
+          NAME: ${{steps.project.outputs.PROJECT_NAME_NS}}
+          VERSION: ${{ steps.project.outputs.VERSION }}
         with:
-          name: balanced-receiver
-          path: outputs
-        
+          name: ${{steps.project.outputs.PROJECT_NAME_NS}}_${{ steps.project.outputs.VERSION }}
+          path: ${{ env.OUTPUT_DIR }}
+
+  create-release:
+    name: Create a release
+    runs-on: ubuntu-24.04
+    needs: generate-build-artifacts
+    if: startsWith(github.event.ref, 'refs/tags/v')
+    permissions: write-all
+    env:
+      OUTPUT_DIR: outputs
+    steps:    
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ${{ env.OUTPUT_DIR }}
+          merge-multiple: true
+
+      - name: Create a release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PROJECT_NAME: ${{ vars.PROJECT_NAME }}
+          PROJECT_TAG: ${{ github.ref_name }}
+        working-directory: ${{ env.OUTPUT_DIR }}
+        run: |
+            gh release create "${PROJECT_TAG}" $(ls) \
+            --title "${PROJECT_NAME} ${PROJECT_TAG}" \
+            --draft \
+            --generate-notes

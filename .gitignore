@@ -30,7 +30,7 @@ fp-info-cache
 *.xml
 *.csv
 
-# Generate fabrication data
+# Generate fabrication data and documentation
 gerber
 gerbers.zip
 outputs
