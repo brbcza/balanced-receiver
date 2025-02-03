@@ -50,7 +50,7 @@ jobs:
           mkdir -p ${OUTPUT_DIR}
           find . -type f -name "*.kicad_sch" | sed 's|^\./||' | while read BOARD_NAME; do
             echo "Generating documentation for \"${BOARD_NAME}\""
-            BOARD_NAME_BASE=$(echo '${BOARD_NAME}' | sed 's|\.kicad_sch||')
+            BOARD_NAME_BASE=$(basename $BOARD_NAME)
             docker run -v ${GITHUB_WORKSPACE}:/kikit --entrypoint kicad-cli yaqwsx/kikit \
               sch export pdf --output "/kikit/${OUTPUT_DIR}/${BOARD_NAME_BASE}_${VERSION}.pdf" "/kikit/${BOARD_NAME}"    
             docker run -v ${GITHUB_WORKSPACE}:/kikit --entrypoint kicad-cli yaqwsx/kikit \
@@ -64,7 +64,7 @@ jobs:
         run: |
           find . -type f -name "*.kicad_pcb" | sed 's|^\./||' | while read BOARD_NAME; do
             echo "Generating gerber files for \"${BOARD_NAME}\""
-            BOARD_NAME_BASE=$(echo '${BOARD_NAME}' | sed 's|\.kicad_pcb||')
+            BOARD_NAME_BASE=$(basename $BOARD_NAME)
             docker run -v ${GITHUB_WORKSPACE}:/kikit yaqwsx/kikit fab ${FABHOUSE} --no-drc "${BOARD_NAME}" .
             mv gerbers.zip ${OUTPUT_DIR}/${BOARD_NAME_BASE}_gerbers_${VERSION}.zip
           done
