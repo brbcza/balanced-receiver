@@ -1,0 +1,46 @@
+# https://taskfile.dev
+
+version: '3'
+
+env:
+    POETRY_VIRTUALENVS_IN_PROJECT: true
+
+dotenv:
+    - ".env"
+
+vars:
+    SCHEMA: $(find . -name '*.kicad_sch')
+    BOARD: $(find . -name '*.kicad_pcb')
+    OUTPUT_DIR: outputs
+
+tasks:
+    modify-title-block:
+        desc: Modify title blocks for release
+        cmds:
+            - python3 scripts/update_title_block.py 
+
+    run-drc:
+        desc: Run PCB tests (Design Rule Checking)
+        cmds:
+            - docker run -v $(pwd):/kikit yaqwsx/kikit drc run "{{.BOARD}}"
+
+    generate-doc:
+        desc: Generate documentation
+        vars:
+            SCHEMA_PDF_NAME: "{{.OUTPUT_DIR}}/$(echo \"{{.SCHEMA}}\" | sed \"s/.kicad_sch/.pdf/\")"
+            BOM_NAME: "{{.OUTPUT_DIR}}/$(echo \"{{.SCHEMA}}\" | sed \"s/.kicad_sch/_bom.csv/\")"
+        cmds:
+            -  mkdir -p {{.OUTPUT_DIR}}
+            -  docker run -v $(pwd):/kikit --entrypoint kicad-cli yaqwsx/kikit sch export pdf --output "/kikit/{{.SCHEMA_PDF_NAME}}" "/kikit/{{.SCHEMA}}"    
+            -  docker run -v $(pwd):/kikit --entrypoint kicad-cli yaqwsx/kikit sch export bom --output "/kikit/{{.BOM_NAME}}" --preset "lcsc-preset" "/kikit/{{.SCHEMA}}"    
+
+    generate-gerbers:
+        desc: Generate gerber files
+        vars:
+            GERBER_ZIP_NAME: "{{.OUTPUT_DIR}}/$(echo \"{{.SCHEMA}}\" | sed \"s/.kicad_sch/_gerbers.zip/\")"
+            FABHOUSE: jlcpcb
+        cmds:
+            - docker run -v $(pwd):/kikit yaqwsx/kikit fab {{.FABHOUSE}} --no-drc "{{.BOARD}}" "{{.OUTPUT_DIR}}"
+            - mv "{{.OUTPUT_DIR}}/gerbers.zip" "{{.GERBER_ZIP_NAME}}"
+
+
