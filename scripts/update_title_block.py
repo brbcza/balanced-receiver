@@ -49,18 +49,18 @@ def main():
     print_title_block()
     for schema_file in glob("*.kicad_sch", root_dir=SRC_PATH):
         print(f"Modifing title block for schematic {schema_file}")
-        with open(path.join(SRC_PATH, schema_file), "r+") as f:
+        with open(path.join(SRC_PATH, schema_file), "r") as f:
             file_content = f.read()
-            file_content = modify_title_block(file_content)
-            f.seek(0, SEEK_SET)
+        file_content = modify_title_block(file_content)
+        with open(path.join(SRC_PATH, schema_file), "w") as f:
             f.write(file_content)
 
     for board_file in glob("*.kicad_pcb", root_dir=SRC_PATH):
         print(f"Modifing title block for board {board_file}")
-        with open(path.join(SRC_PATH, board_file), "r+") as f:
+        with open(path.join(SRC_PATH, board_file), "r") as f:
             file_content = f.read()
-            file_content = modify_title_block(file_content)
-            f.seek(0, SEEK_SET)
+        file_content = modify_title_block(file_content)
+        with open(path.join(SRC_PATH, board_file), "w") as f:
             f.write(file_content)
 
 
