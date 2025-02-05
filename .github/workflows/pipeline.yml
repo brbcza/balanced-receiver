@@ -46,21 +46,21 @@ jobs:
         run: |
           mkdir -p ${OUTPUT_DIR}
           ERROR_DETECTED=0
+          EXIT_CODE=0
           for BOARD_NAME in $(find . -type f -name "*.kicad_sch" | sed 's|^\./||'); do
               echo "Running ERC test for \"${BOARD_NAME}\""
               BOARD_NAME_BASE=${BOARD_NAME%.*}
               docker run -v $(pwd):/kikit --entrypoint kicad-cli yaqwsx/kikit \
                   sch erc --output "/kikit/${OUTPUT_DIR}/${BOARD_NAME_BASE}.rpt" \
-                  --format report --exit-code-violations "/kikit/${BOARD_NAME}" || EXIT_CODE=$?
+                  --format report --exit-code-violations --severity-error \
+                   "/kikit/${BOARD_NAME}" || EXIT_CODE=$?
               if [ $EXIT_CODE -ne 0 ]; then
-                  echo "Error: ERC   test failed for ${BOARD_NAME}" 
-                  cat "${OUTPUT_DIR}/${BOARD_NAME_BASE}.rpt"      
+                  echo "Error: ERC test failed for ${BOARD_NAME}"
+                  cat "${OUTPUT_DIR}/${BOARD_NAME_BASE}.rpt"
                   ERROR_DETECTED=1
               fi
           done
-          echo "Final ERROR_DETECTED value: $ERROR_DETECTED"
           if [ $ERROR_DETECTED -ne 0 ]; then
-            echo "Exiting with error due to detected issues."
             exit 1
           fi
 
@@ -102,15 +102,17 @@ jobs:
         run: |
           mkdir -p ${OUTPUT_DIR}
           ERROR_DETECTED=0
+          EXIT_CODE=0
           for BOARD_NAME in $(find . -type f -name "*.kicad_pcb" | sed 's|^\./||'); do
               echo "Running DRC test for \"${BOARD_NAME}\""
               BOARD_NAME_BASE=${BOARD_NAME%.*}
               docker run -v $(pwd):/kikit --entrypoint kicad-cli yaqwsx/kikit \
                   pcb drc --output "/kikit/${OUTPUT_DIR}/${BOARD_NAME_BASE}.rpt" \
-                  --format report --schematic-parity --exit-code-violations "/kikit/${BOARD_NAME}" || EXIT_CODE=$?
+                  --format report --schematic-parity --exit-code-violations --severity-error \
+                  "/kikit/${BOARD_NAME}" || EXIT_CODE=$?
               if [ $EXIT_CODE -ne 0 ]; then
-                  echo "Error: DRC test failed for ${BOARD_NAME}" 
-                  cat "${OUTPUT_DIR}/${BOARD_NAME_BASE}.rpt"      
+                  echo "Error: DRC test failed for ${BOARD_NAME}"
+                  cat "${OUTPUT_DIR}/${BOARD_NAME_BASE}.rpt"
                   ERROR_DETECTED=1
               fi
           done
