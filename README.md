@@ -10,7 +10,7 @@ This board is ideal for anyone looking to build high-quality audio systems, such
 
 > [!NOTE]  
 > The latest production files for the Balanced Audio Receiver can be downloaded from the [latest release](https://github.com/brbcza/balanced-receiver/releases/latest).  
-> The [Interactive BOM](TBD) is also available in the latest release for easier component sourcing.
+> The [Interactive BOM](https://brbcza.github.io/balanced-receiver/balanced-receiver_ibom.html) is also available in the latest release for easier component sourcing.
 
 ![PCB image](doc/pcb_front.png)
 
@@ -29,7 +29,7 @@ The Balanced Audio Receiver board incorporates several essential features to ens
 The Balanced Audio Receiver PCB is designed to be as modular and flexible as possible. It is intended for use in various custom audio systems where space, signal integrity, and power efficiency are important considerations. The generated [Bill of Materials](https://github.com/brbcza/balanced-receiver/releases/latest) from latest release will help to guide you in sourcing the components for assembly.
 
 > **Interactive BOM**  
-> The interactive BOM can be found at the following link: [Interactive BOM](TBD).
+> The interactive BOM can be found at the following link: [Interactive BOM](https://brbcza.github.io/balanced-receiver/balanced-receiver_ibom.html).
 
 ## Contributing
 
