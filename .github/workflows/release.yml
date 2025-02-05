@@ -7,6 +7,9 @@ on:
       - 'devel'
     tags:
       - 'v*'
+    paths-ignore: 
+      - 'README.md'
+      - 'doc'
 
 jobs:
   generate-build-artifacts:
@@ -41,7 +44,7 @@ jobs:
           TITLE_BLOCK_PROJECT_NAME: ${{ vars.PROJECT_NAME }}
           TITLE_BLOCK_PROJECT_NAME_SHORT: ${{ vars.PROJECT_NAME_SHORT }}
         run: |
-          TITLE_BLOCK_DATE=$(date +'%Y.%m.%d') \
+          TITLE_BLOCK_DATE=$(date +'%Y-%m-%d') \
             python3 scripts/update_title_block.py 
 
       - name: Generate release documentation
