@@ -2702,7 +2702,7 @@
 				)
 			)
 		)
-		(symbol "brbCZa-KicadSymLib:THAT1240"
+		(symbol "balanced-receiver:THAT1240"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -2740,7 +2740,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Precision differen-tial amplifiers designed primarily for use as balanced line receivers for audio applications"
+			(property "Description" "Precision differential amplifiers designed primarily for use as balanced line receivers for audio applications"
 				(at 1.27 0 0)
 				(effects
 					(font
@@ -3213,6 +3213,102 @@
 				)
 			)
 		)
+		(symbol "power:PWR_FLAG"
+			(power)
+			(pin_numbers hide)
+			(pin_names
+				(offset 0) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#FLG"
+				(at 0 1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "PWR_FLAG"
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Special symbol for telling ERC where power comes from"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "flag power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "PWR_FLAG_0_0"
+				(pin power_out line
+					(at 0 0 90)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+		)
 		(symbol "power:VCC"
 			(power)
 			(pin_numbers hide)
@@ -3365,6 +3461,12 @@
 		(uuid "16faab87-21d1-4854-abe3-8e77058fdf73")
 	)
 	(junction
+		(at 179.07 38.1)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1e971ae3-9a30-4b0c-9fe5-4bb4773b2b79")
+	)
+	(junction
 		(at 74.93 45.72)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3467,6 +3569,12 @@
 		(uuid "99c0357b-80c0-4dd4-9438-311deee362c6")
 	)
 	(junction
+		(at 29.21 107.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9aec2a1c-3def-406b-abe1-7e5b5fbd033a")
+	)
+	(junction
 		(at 74.93 33.02)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3515,6 +3623,12 @@
 		(uuid "cecd3f65-4f26-4bd5-91de-cbda95571370")
 	)
 	(junction
+		(at 96.52 161.29)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "dac79fde-20ee-40be-a81d-876e620b740a")
+	)
+	(junction
 		(at 146.05 165.1)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3541,6 +3655,16 @@
 	(no_connect
 		(at 88.9 163.83)
 		(uuid "6f9caded-32f2-4d63-9bca-e0c5bd5c52f9")
+	)
+	(wire
+		(pts
+			(xy 179.07 38.1) (xy 179.07 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "02454c2c-d6de-48d9-93f3-84a5ca8009be")
 	)
 	(wire
 		(pts
@@ -3784,7 +3908,7 @@
 	)
 	(wire
 		(pts
-			(xy 179.07 33.02) (xy 179.07 59.69)
+			(xy 179.07 33.02) (xy 179.07 38.1)
 		)
 		(stroke
 			(width 0)
@@ -3824,6 +3948,16 @@
 	)
 	(wire
 		(pts
+			(xy 177.8 158.75) (xy 173.99 158.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "32e62839-42bf-48ab-a03d-9e2d68885f6c")
+	)
+	(wire
+		(pts
 			(xy 143.51 59.69) (xy 179.07 59.69)
 		)
 		(stroke
@@ -3831,6 +3965,16 @@
 			(type default)
 		)
 		(uuid "33b09bc7-9bbf-46d6-b9a0-350b8b75025b")
+	)
+	(wire
+		(pts
+			(xy 25.4 107.95) (xy 29.21 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3601dd2a-6d5f-474f-ab3d-557c6b9073fe")
 	)
 	(wire
 		(pts
@@ -4164,6 +4308,16 @@
 	)
 	(wire
 		(pts
+			(xy 25.4 106.68) (xy 25.4 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6392de32-cb47-41f4-8814-44dca86904a6")
+	)
+	(wire
+		(pts
 			(xy 91.44 166.37) (xy 88.9 166.37)
 		)
 		(stroke
@@ -4231,6 +4385,16 @@
 			(type default)
 		)
 		(uuid "7097829b-ad68-4f1a-bab2-e9f1ef32dbc2")
+	)
+	(wire
+		(pts
+			(xy 96.52 154.94) (xy 96.52 161.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "70a58918-9ee2-4a14-8003-53c2a813d418")
 	)
 	(wire
 		(pts
@@ -4321,6 +4485,16 @@
 			(type default)
 		)
 		(uuid "7facd244-957c-47b7-b288-c9d11afe35cf")
+	)
+	(wire
+		(pts
+			(xy 96.52 165.1) (xy 96.52 161.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "81be4e2c-3e45-4610-bd3e-cc62d49cf435")
 	)
 	(wire
 		(pts
@@ -4441,16 +4615,6 @@
 			(type default)
 		)
 		(uuid "8ee65790-33fe-4436-9c2b-0f8ca6d85058")
-	)
-	(wire
-		(pts
-			(xy 96.52 154.94) (xy 96.52 161.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "90d26194-e6b2-460d-9a82-038a7a6bad7d")
 	)
 	(wire
 		(pts
@@ -5104,6 +5268,16 @@
 	)
 	(wire
 		(pts
+			(xy 101.6 165.1) (xy 96.52 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e463a84c-5954-45db-9363-0c5d23178ca4")
+	)
+	(wire
+		(pts
 			(xy 87.63 107.95) (xy 90.17 107.95)
 		)
 		(stroke
@@ -5181,6 +5355,26 @@
 			(type default)
 		)
 		(uuid "f296ab65-a2c3-45a4-9154-ba2ee06dd09c")
+	)
+	(wire
+		(pts
+			(xy 173.99 158.75) (xy 173.99 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f65bd32f-2209-460a-aac6-86c0d6d3e9f0")
+	)
+	(wire
+		(pts
+			(xy 179.07 38.1) (xy 185.42 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f7584306-3183-48fc-b4c5-0999fdcbce29")
 	)
 	(wire
 		(pts
@@ -6228,34 +6422,17 @@
 		)
 	)
 	(symbol
-		(lib_id "brbCZa-KicadSymLib:THAT1240")
-		(at 73.66 107.95 0)
+		(lib_id "power:PWR_FLAG")
+		(at 101.6 165.1 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "22103c37-9bca-41b5-9d8b-78754c6ce218")
-		(property "Reference" "U1"
-			(at 82.042 99.314 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "THAT1240"
-			(at 85.344 101.346 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 74.93 107.95 0)
+		(fields_autoplaced yes)
+		(uuid "22109c8f-c86b-4cdc-bbcb-9e5e3668bc18")
+		(property "Reference" "#FLG01"
+			(at 103.505 165.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6263,8 +6440,17 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.thatcorp.com/datashts/THAT_1240-Series_Datasheet.pdf"
-			(at 73.66 107.95 0)
+		(property "Value" "PWR_FLAG"
+			(at 105.41 165.0999 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 101.6 165.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6272,8 +6458,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Precision differen-tial amplifiers designed primarily for use as balanced line receivers for audio applications"
-			(at 74.93 107.95 0)
+		(property "Datasheet" "~"
+			(at 101.6 165.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6281,58 +6467,22 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "1240S08-U "
-			(at 73.66 107.95 0)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 101.6 165.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
-		)
-		(property "Sim.Device" ""
-			(at 73.66 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" ""
-			(at 73.66 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "6"
-			(uuid "ae865c43-731d-412f-a15e-6c0d53a12fe1")
-		)
-		(pin "2"
-			(uuid "0cf5c993-becf-40bb-b39d-60fa44845083")
-		)
-		(pin "5"
-			(uuid "e7318880-d180-4328-a37e-6440634ec82f")
-		)
-		(pin "4"
-			(uuid "b09ece32-133a-4545-af26-13272b462491")
-		)
-		(pin "3"
-			(uuid "ad41b127-e41e-47aa-8c9c-46216283f001")
 		)
 		(pin "1"
-			(uuid "b00ae115-2c02-4041-912e-581ed7bcf329")
-		)
-		(pin "7"
-			(uuid "fef0b3db-34b9-4b97-8c8f-8a336e22506a")
+			(uuid "87e30d2f-a725-40ba-a7d0-013501d80579")
 		)
 		(instances
-			(project ""
+			(project "balanced-receiver"
 				(path "/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a"
-					(reference "U1")
+					(reference "#FLG01")
 					(unit 1)
 				)
 			)
@@ -6998,7 +7148,7 @@
 				)
 			)
 		)
-		(property "Footprint" "brbCZa-KicadFootprintLib:Fuse_1812_4532Metric_Pad1.30x3.40mm_HandSolder"
+		(property "Footprint" "balanced-receiver:Fuse_1812_4532Metric_Pad1.30x3.40mm_HandSolder"
 			(at 171.45 151.13 0)
 			(effects
 				(font
@@ -7214,6 +7364,72 @@
 			(project "balanced-receiver"
 				(path "/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a"
 					(reference "#PWR026")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 25.4 106.68 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3e695f5e-6bf9-4064-841e-0b2a34d42687")
+		(property "Reference" "#FLG02"
+			(at 25.4 104.775 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 25.4 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 25.4 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 25.4 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 25.4 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a223e7b1-d05e-4dcd-864e-07cb09bd9cfc")
+		)
+		(instances
+			(project "balanced-receiver"
+				(path "/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a"
+					(reference "#FLG02")
 					(unit 1)
 				)
 			)
@@ -9118,7 +9334,7 @@
 				)
 			)
 		)
-		(property "Footprint" "brbCZa-KicadFootprintLib:SOT-583-8"
+		(property "Footprint" "balanced-receiver:SOT-583-8"
 			(at 109.22 66.04 0)
 			(effects
 				(font
@@ -9831,7 +10047,7 @@
 				)
 			)
 		)
-		(property "Footprint" "brbCZa-KicadFootprintLib:BarrelJack_GCT_DCJ200-10-A_Horizontal"
+		(property "Footprint" "balanced-receiver:BarrelJack_GCT_DCJ200-10-A_Horizontal"
 			(at 82.55 164.846 0)
 			(effects
 				(font
@@ -10074,6 +10290,73 @@
 			(project ""
 				(path "/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a"
 					(reference "R1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 177.8 158.75 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a88cd62b-87a7-4bb0-80bc-37566a35afbd")
+		(property "Reference" "#FLG03"
+			(at 179.705 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 181.61 158.7499 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 177.8 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 177.8 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 177.8 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bdf482da-f6dd-41ba-8323-2ed22224cd72")
+		)
+		(instances
+			(project "balanced-receiver"
+				(path "/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a"
+					(reference "#FLG03")
 					(unit 1)
 				)
 			)
@@ -11117,7 +11400,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "brbCZa-KicadFootprintLib:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical"
+		(property "Footprint" "balanced-receiver:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical"
 			(at 245.11 116.84 0)
 			(effects
 				(font
@@ -11239,6 +11522,73 @@
 			(project "balanced-receiver"
 				(path "/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a"
 					(reference "#PWR033")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 185.42 38.1 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d52fbf84-12f1-4b40-83ab-f5e32ae7c3b0")
+		(property "Reference" "#FLG04"
+			(at 187.325 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 189.23 38.0999 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 185.42 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 185.42 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 185.42 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b1d366e0-7fb4-46d0-acef-eb9fcbe957b6")
+		)
+		(instances
+			(project "balanced-receiver"
+				(path "/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a"
+					(reference "#FLG04")
 					(unit 1)
 				)
 			)
@@ -11378,7 +11728,7 @@
 				)
 			)
 		)
-		(property "Footprint" "brbCZa-KicadFootprintLib:Jack_XLR_Neutrik_NC3FAH2_Horizontal"
+		(property "Footprint" "balanced-receiver:Jack_XLR_Neutrik_NC3FAH2_Horizontal"
 			(at 40.64 157.48 0)
 			(effects
 				(font
@@ -11708,7 +12058,7 @@
 				)
 			)
 		)
-		(property "Footprint" "brbCZa-KicadFootprintLib:L_7.3x7.3_H4.5"
+		(property "Footprint" "balanced-receiver:L_7.3x7.3_H4.5"
 			(at 137.16 33.02 0)
 			(effects
 				(font
@@ -12481,6 +12831,88 @@
 			(project "balanced-receiver"
 				(path "/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a"
 					(reference "#PWR09")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "balanced-receiver:THAT1240")
+		(at 73.66 107.95 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "fc0fd1b0-8039-4013-8e23-6244ad83eb94")
+		(property "Reference" "U1"
+			(at 77.724 100.584 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "THAT1240"
+			(at 81.026 102.616 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 74.93 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.thatcorp.com/datashts/THAT_1240-Series_Datasheet.pdf"
+			(at 73.66 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Precision differential amplifiers designed primarily for use as balanced line receivers for audio applications"
+			(at 74.93 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "4"
+			(uuid "086eb263-119c-4b99-a385-d381c8181e71")
+		)
+		(pin "7"
+			(uuid "5d27da17-c6bc-4b75-b9c5-05d5ae5b60d0")
+		)
+		(pin "2"
+			(uuid "ea11893d-c96e-4bde-bea1-d0ccc07ad565")
+		)
+		(pin "1"
+			(uuid "7ca51f86-4d0c-44cd-8294-0d9f763704e5")
+		)
+		(pin "3"
+			(uuid "32cce111-b888-4c5b-b947-bf593fe63fd0")
+		)
+		(pin "6"
+			(uuid "3b65cf6e-3674-4ecb-9e35-17662f7604f8")
+		)
+		(pin "5"
+			(uuid "a85354bb-4a4a-41f1-869c-0226a00c844b")
+		)
+		(instances
+			(project ""
+				(path "/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a"
+					(reference "U1")
 					(unit 1)
 				)
 			)
