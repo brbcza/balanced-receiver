@@ -8,14 +8,18 @@ on:
         - '*.kicad_pro'
         - '*.kicad_sch'
         - '*.kicad_pcb'
+        - 'libs/**'
+        - '.github/workflows/pipeline.yml'
   pull_request:
     branches: 
         - '**' 
 
 jobs:
-  run-drc:
+  run-erc:
     runs-on: ubuntu-latest
-    name: Design Rule Checking
+    name: Electrical Rule Check
+    env:
+      OUTPUT_DIR: outputs
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -40,8 +44,64 @@ jobs:
 
       - name: Run tests
         run: |
+          mkdir -p ${OUTPUT_DIR} 
+          find . -type f -name "*.kicad_sch" | sed 's|^\./||' | while read BOARD_NAME; do
+            echo "Running ERC test for \"${BOARD_NAME}\""
+            BOARD_NAME_BASE=${BOARD_NAME%.*}
+            docker run -v $(pwd):/kikit --entrypoint kicad-cli yaqwsx/kikit \
+              sch erc --output "/kikit/${OUTPUT_DIR}/${BOARD_NAME_BASE}.rpt" \
+              --format report --exit-code-violations "/kikit/${BOARD_NAME}" 
+          done
+
+      - name: Archive artifacts
+        if: ${{ success() }} || ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: erc_tests
+          path: ${{ env.OUTPUT_DIR }}
+        
+  run-drc:
+    runs-on: ubuntu-latest
+    name: Design Rule Check
+    env:
+      OUTPUT_DIR: outputs
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Task
+        uses: arduino/setup-task@v2
+        with:
+          version: 3.x
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Modify title block
+        env:
+          TITLE_BLOCK_AUTHOR: ${{ vars.PROJECT_AUTHOR }}
+          TITLE_BLOCK_REVISION: ${{ github.sha }}
+          TITLE_BLOCK_BASE_REPOSITORY: github.com/${{ github.repository_owner }}
+          TITLE_BLOCK_REPOSITORY: ${{ github.server_url }}/${{github.repository}}
+          TITLE_BLOCK_PROJECT_NAME: ${{ vars.PROJECT_NAME }}
+          TITLE_BLOCK_PROJECT_NAME_SHORT: ${{ vars.PROJECT_NAME_SHORT }}
+        run: |
+          TITLE_BLOCK_DATE=$(date +'%Y.%m.%d') \
+            python3 scripts/update_title_block.py 
+
+      - name: Run tests
+        run: |
+          mkdir -p ${OUTPUT_DIR} 
           find . -type f -name "*.kicad_pcb" | sed 's|^\./||' | while read BOARD_NAME; do
             echo "Running DRC test for \"${BOARD_NAME}\""
-            docker run -v $(pwd):/kikit yaqwsx/kikit drc run "${BOARD_NAME}"
+            BOARD_NAME_BASE=${BOARD_NAME%.*}
+            docker run -v $(pwd):/kikit --entrypoint kicad-cli yaqwsx/kikit \
+              pcb drc --output "/kikit/${OUTPUT_DIR}/${BOARD_NAME_BASE}.rpt" \
+              --format report --schematic-parity --exit-code-violations "/kikit/${BOARD_NAME}" 
           done
+
+      - name: Archive artifacts
+        if: ${{ success() }} || ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: drc_tests
+          path: ${{ env.OUTPUT_DIR }}
         

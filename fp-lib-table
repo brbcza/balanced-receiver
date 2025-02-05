@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "balanced-receiver")(type "KiCad")(uri "${KIPRJMOD}/lib/balanced-receiver.pretty")(options "")(descr ""))
+)
