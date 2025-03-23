@@ -70,7 +70,8 @@ jobs:
         run: |
           echo "Generating gerber files for \"${PCB_NAME}\""
           PCB_NAME_BASE=${PCB_NAME%.*}
-          docker run -v ${GITHUB_WORKSPACE}:/kikit yaqwsx/kikit fab ${FABHOUSE} --no-drc "${PCB_NAME}" .
+          docker run -v ${GITHUB_WORKSPACE}:/kikit --entrypoint icad/kicad:9.0 \
+            bash /kikit/scripts/install_kikit.sh && kikit fab ${FABHOUSE} --no-drc "${PCB_NAME}" .
           mv gerbers.zip ${OUTPUT_DIR}/${PCB_NAME_BASE}_gerbers_${VERSION}.zip
 
       - name: Archive artifacts
