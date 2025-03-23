@@ -43,25 +43,22 @@ jobs:
             python3 scripts/update_title_block.py 
 
       - name: Run tests
+        env:
+          SCHEMA_NAME: balanced-receiver.kicad_sch
         run: |
           mkdir -p ${OUTPUT_DIR}
-          ERROR_DETECTED=0
+          chmod -R 777 ${OUTPUT_DIR}
           EXIT_CODE=0
-          for BOARD_NAME in $(find . -type f -name "*.kicad_sch" | sed 's|^\./||'); do
-              echo "Running ERC test for \"${BOARD_NAME}\""
-              BOARD_NAME_BASE=${BOARD_NAME%.*}
-              docker run -v $(pwd):/kikit --entrypoint kicad-cli yaqwsx/kikit \
-                  sch erc --output "/kikit/${OUTPUT_DIR}/${BOARD_NAME_BASE}.rpt" \
-                  --format report --exit-code-violations --severity-error \
-                   "/kikit/${BOARD_NAME}" || EXIT_CODE=$?
-              if [ $EXIT_CODE -ne 0 ]; then
-                  echo "Error: ERC test failed for ${BOARD_NAME}"
-                  cat "${OUTPUT_DIR}/${BOARD_NAME_BASE}.rpt"
-                  ERROR_DETECTED=1
-              fi
-          done
-          if [ $ERROR_DETECTED -ne 0 ]; then
-            exit 1
+          echo "Running ERC test for \"${SCHEMA_NAME}\""
+          SCHEMA_NAME_BASE=${SCHEMA_NAME%.*}
+          docker run -v $(pwd):/kicad --entrypoint kicad-cli kicad/kicad:9.0 \
+            sch erc --output "/kicad/${OUTPUT_DIR}/${SCHEMA_NAME_BASE}.rpt" \
+            --format report --exit-code-violations --severity-error \
+            "/kicad/${SCHEMA_NAME}" || EXIT_CODE=$?
+          if [ $EXIT_CODE -ne 0 ]; then
+            echo "Error: ERC test failed for ${SCHEMA_NAME}"
+            cat "${OUTPUT_DIR}/${SCHEMA_NAME_BASE}.rpt"
+            exit $EXIT_CODE
           fi
 
       - name: Archive artifacts
@@ -99,25 +96,22 @@ jobs:
             python3 scripts/update_title_block.py 
 
       - name: Run tests
+        env:
+          PCB_NAME: balanced-receiver.kicad_pcb
         run: |
           mkdir -p ${OUTPUT_DIR}
-          ERROR_DETECTED=0
+          chmod -R 777 ${OUTPUT_DIR}
           EXIT_CODE=0
-          for BOARD_NAME in $(find . -type f -name "*.kicad_pcb" | sed 's|^\./||'); do
-              echo "Running DRC test for \"${BOARD_NAME}\""
-              BOARD_NAME_BASE=${BOARD_NAME%.*}
-              docker run -v $(pwd):/kikit --entrypoint kicad-cli yaqwsx/kikit \
-                  pcb drc --output "/kikit/${OUTPUT_DIR}/${BOARD_NAME_BASE}.rpt" \
-                  --format report --schematic-parity --exit-code-violations --severity-error \
-                  "/kikit/${BOARD_NAME}" || EXIT_CODE=$?
-              if [ $EXIT_CODE -ne 0 ]; then
-                  echo "Error: DRC test failed for ${BOARD_NAME}"
-                  cat "${OUTPUT_DIR}/${BOARD_NAME_BASE}.rpt"
-                  ERROR_DETECTED=1
-              fi
-          done
-          if [ $ERROR_DETECTED -ne 0 ]; then
-              exit 1
+          echo "Running DRC test for \"${PCB_NAME}\""
+          PCB_NAME_BASE=${PCB_NAME%.*}
+          docker run -v $(pwd):/kicad --entrypoint kicad-cli kicad/kicad:9.0 \
+            pcb drc --output "/kicad/${OUTPUT_DIR}/${PCB_NAME_BASE}.rpt" \
+            --format report --schematic-parity --exit-code-violations --severity-error \
+            "/kicad/${PCB_NAME}" || EXIT_CODE=$?
+          if [ $EXIT_CODE -ne 0 ]; then
+            echo "Error: DRC test failed for ${PCB_NAME}"
+            cat "${OUTPUT_DIR}/${PCB_NAME_BASE}.rpt"
+            exit $EXIT_CODE
           fi
 
       - name: Archive artifacts

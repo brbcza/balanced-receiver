@@ -2,7 +2,7 @@ kibot:
   version: 1
 
 global:
-  date_time_format: '%Y.%m.%d'
+  date_time_format: '%Y_%m_%d'
   output: '%f_%i.%x'
 
 outputs:
