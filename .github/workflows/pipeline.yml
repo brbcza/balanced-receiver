@@ -45,15 +45,16 @@ jobs:
       - name: Run tests
         run: |
           mkdir -p ${OUTPUT_DIR}
+          chmod -R 777 ${OUTPUT_DIR}
           ERROR_DETECTED=0
           EXIT_CODE=0
           for BOARD_NAME in $(find . -type f -name "*.kicad_sch" | sed 's|^\./||'); do
               echo "Running ERC test for \"${BOARD_NAME}\""
               BOARD_NAME_BASE=${BOARD_NAME%.*}
-              docker run -v $(pwd):/kikit --entrypoint kicad-cli yaqwsx/kikit \
-                  sch erc --output "/kikit/${OUTPUT_DIR}/${BOARD_NAME_BASE}.rpt" \
+              docker run -v $(pwd):/kicad --entrypoint kicad-cli kicad/kicad:9.0 \
+                  sch erc --output "/kicad/${OUTPUT_DIR}/${BOARD_NAME_BASE}.rpt" \
                   --format report --exit-code-violations --severity-error \
-                   "/kikit/${BOARD_NAME}" || EXIT_CODE=$?
+                   "/kicad/${BOARD_NAME}" || EXIT_CODE=$?
               if [ $EXIT_CODE -ne 0 ]; then
                   echo "Error: ERC test failed for ${BOARD_NAME}"
                   cat "${OUTPUT_DIR}/${BOARD_NAME_BASE}.rpt"
@@ -101,15 +102,16 @@ jobs:
       - name: Run tests
         run: |
           mkdir -p ${OUTPUT_DIR}
+          chmod -R 777 ${OUTPUT_DIR}
           ERROR_DETECTED=0
           EXIT_CODE=0
           for BOARD_NAME in $(find . -type f -name "*.kicad_pcb" | sed 's|^\./||'); do
               echo "Running DRC test for \"${BOARD_NAME}\""
               BOARD_NAME_BASE=${BOARD_NAME%.*}
-              docker run -v $(pwd):/kikit --entrypoint kicad-cli yaqwsx/kikit \
-                  pcb drc --output "/kikit/${OUTPUT_DIR}/${BOARD_NAME_BASE}.rpt" \
+              docker run -v $(pwd):/kicad --entrypoint kicad-cli kicad/kicad:9.0 \
+                  pcb drc --output "/kicad/${OUTPUT_DIR}/${BOARD_NAME_BASE}.rpt" \
                   --format report --schematic-parity --exit-code-violations --severity-error \
-                  "/kikit/${BOARD_NAME}" || EXIT_CODE=$?
+                  "/kicad/${BOARD_NAME}" || EXIT_CODE=$?
               if [ $EXIT_CODE -ne 0 ]; then
                   echo "Error: DRC test failed for ${BOARD_NAME}"
                   cat "${OUTPUT_DIR}/${BOARD_NAME_BASE}.rpt"
