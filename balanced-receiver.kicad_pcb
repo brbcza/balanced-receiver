@@ -32974,7 +32974,7 @@
 		)
 	)
 	(gr_text "${COMMENT8}\n${COMMENT9}\n${REVISION} ${ISSUE_DATE}\n"
-		(at 25.6325 34.94 0)
+		(at 25.9325 35.24 0)
 		(layer "F.SilkS" knockout)
 		(uuid "5a869b85-cc72-4e4c-b676-a1532e9dcc77")
 		(effects
@@ -33219,7 +33219,7 @@
 		(uuid "1caa7de4-0a7a-432a-bd45-3d4bc81adfbb")
 	)
 	(via
-		(at 70.4325 78.94)
+		(at 71.4325 78.04)
 		(size 0.6)
 		(drill 0.3)
 		(layers "F.Cu" "B.Cu")
@@ -33227,7 +33227,7 @@
 		(uuid "1d251546-2688-41b0-9489-5fc60945f9c0")
 	)
 	(via
-		(at 45.4325 98.94)
+		(at 45.4325 97.54)
 		(size 0.6)
 		(drill 0.3)
 		(layers "F.Cu" "B.Cu")
@@ -33243,7 +33243,7 @@
 		(uuid "23b9149f-a0ab-4b30-8772-72970dd7fe4b")
 	)
 	(via
-		(at 30.4325 43.94)
+		(at 30.2325 44.44)
 		(size 0.6)
 		(drill 0.3)
 		(layers "F.Cu" "B.Cu")
@@ -33308,7 +33308,7 @@
 		(uuid "5371c548-e37f-4b2c-a212-6c442a744e97")
 	)
 	(via
-		(at 74.8325 37.04)
+		(at 75.7325 37.04)
 		(size 0.6)
 		(drill 0.3)
 		(layers "F.Cu" "B.Cu")
@@ -33383,7 +33383,7 @@
 		(uuid "9794eb0a-56f0-432f-bd51-ed35c6256cd1")
 	)
 	(via
-		(at 74.7325 47.84)
+		(at 75.4325 48.44)
 		(size 0.6)
 		(drill 0.3)
 		(layers "F.Cu" "B.Cu")
@@ -33392,7 +33392,7 @@
 		(uuid "9d78e8ea-a023-422e-b4e0-a9afccdb00a4")
 	)
 	(via
-		(at 75.4325 108.94)
+		(at 78.6325 108.74)
 		(size 0.6)
 		(drill 0.3)
 		(layers "F.Cu" "B.Cu")
@@ -33432,7 +33432,7 @@
 		(uuid "aef396f7-6dbb-494a-83ce-283bdfba6858")
 	)
 	(via
-		(at 70.4325 93.94)
+		(at 70.4325 93.34)
 		(size 0.6)
 		(drill 0.3)
 		(layers "F.Cu" "B.Cu")
@@ -33539,7 +33539,7 @@
 		(uuid "cb15ce40-4ef2-436c-a04d-d021bc8f0fa1")
 	)
 	(via
-		(at 74.7325 45.24)
+		(at 75.4325 45.24)
 		(size 0.6)
 		(drill 0.3)
 		(layers "F.Cu" "B.Cu")
@@ -33646,7 +33646,7 @@
 		(uuid "e68c8c00-d21f-4ff4-a6bf-a7e1474f737e")
 	)
 	(via
-		(at 30.4325 68.94)
+		(at 30.0325 68.64)
 		(size 0.6)
 		(drill 0.3)
 		(layers "F.Cu" "B.Cu")
