@@ -50,28 +50,28 @@ jobs:
       - name: Generate release documentation
         env:
           VERSION: ${{ steps.project.outputs.VERSION }}
+          SCHEMA_NAME: balanced-receiver.kicad_sch
         run: |
           mkdir -p ${OUTPUT_DIR}
-          find . -type f -name "*.kicad_sch" | sed 's|^\./||' | while read BOARD_NAME; do
-            echo "Generating documentation for \"${BOARD_NAME}\""
-            BOARD_NAME_BASE=${BOARD_NAME%.*}
-            docker run -v ${GITHUB_WORKSPACE}:/kikit --entrypoint kicad-cli yaqwsx/kikit \
-              sch export pdf --output "/kikit/${OUTPUT_DIR}/${BOARD_NAME_BASE}_${VERSION}.pdf" "/kikit/${BOARD_NAME}"    
-            docker run -v ${GITHUB_WORKSPACE}:/kikit --entrypoint kicad-cli yaqwsx/kikit \
-              sch export pdf --output "/kikit/${OUTPUT_DIR}/${BOARD_NAME_BASE}_bom_${VERSION}.csv" "/kikit/${BOARD_NAME}"
-          done
+          chmod -R 777 ${OUTPUT_DIR}
+          echo "Generating documentation for \"${SCHEMA_NAME}\""
+          SCHEMA_NAME_BASE=${SCHEMA_NAME%.*}
+          docker run -v ${GITHUB_WORKSPACE}:/kicad --entrypoint kicad-cli kicad/kicad:9.0  \
+            sch export pdf --output "/kicad/${OUTPUT_DIR}/${SCHEMA_NAME_BASE}_${VERSION}.pdf" "/kicad/${SCHEMA_NAME}"    
+          docker run -v ${GITHUB_WORKSPACE}:/kicad --entrypoint kicad-cli kicad/kicad:9.0  \
+            sch export bom --preset \
+            --output "/kicad/${OUTPUT_DIR}/${SCHEMA_NAME_BASE}_bom_${VERSION}.csv" "/kicad/${SCHEMA_NAME}"
 
       - name: Generate gerber files
         env:
           FABHOUSE: jlcpcb
+          PCB_NAME: balanced-receiver.kicad_pcb
           VERSION: ${{ steps.project.outputs.VERSION }}
         run: |
-          find . -type f -name "*.kicad_pcb" | sed 's|^\./||' | while read BOARD_NAME; do
-            echo "Generating gerber files for \"${BOARD_NAME}\""
-            BOARD_NAME_BASE=${BOARD_NAME%.*}
-            docker run -v ${GITHUB_WORKSPACE}:/kikit yaqwsx/kikit fab ${FABHOUSE} --no-drc "${BOARD_NAME}" .
-            mv gerbers.zip ${OUTPUT_DIR}/${BOARD_NAME_BASE}_gerbers_${VERSION}.zip
-          done
+          echo "Generating gerber files for \"${PCB_NAME}\""
+          PCB_NAME_BASE=${PCB_NAME%.*}
+          docker run -v ${GITHUB_WORKSPACE}:/kikit yaqwsx/kikit fab ${FABHOUSE} --no-drc "${PCB_NAME}" .
+          mv gerbers.zip ${OUTPUT_DIR}/${PCB_NAME_BASE}_gerbers_${VERSION}.zip
 
       - name: Archive artifacts
         uses: actions/upload-artifact@v4

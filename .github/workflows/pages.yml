@@ -48,7 +48,7 @@ jobs:
             TITLE_BLOCK_DATE=$(date +'%Y-%m-%d') \
                 python3 scripts/update_title_block.py 
 
-      - uses: INTI-CMNB/KiBot@v1.8.2
+      - uses: INTI-CMNB/KiBot@v1.8.3
         with:
           dir: outputs
           config: balanced-receiver.kibot.yaml
