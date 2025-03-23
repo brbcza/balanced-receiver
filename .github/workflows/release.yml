@@ -39,7 +39,7 @@ jobs:
         env:
           TITLE_BLOCK_AUTHOR: ${{ vars.PROJECT_AUTHOR }}
           TITLE_BLOCK_REVISION: ${{ steps.project.outputs.VERSION }}
-          TITLE_BLOCK_BASE_REPOSITORY: github.com/${{ github.repository_owner }}
+          TITLE_BLOCK_BASE_REPOSITORY: github.com/${{github.repository}}
           TITLE_BLOCK_REPOSITORY: ${{ github.server_url }}/${{github.repository}}
           TITLE_BLOCK_PROJECT_NAME: ${{ vars.PROJECT_NAME }}
           TITLE_BLOCK_PROJECT_NAME_SHORT: ${{ vars.PROJECT_NAME_SHORT }}
@@ -56,9 +56,9 @@ jobs:
           chmod -R 777 ${OUTPUT_DIR}
           echo "Generating documentation for \"${SCHEMA_NAME}\""
           SCHEMA_NAME_BASE=${SCHEMA_NAME%.*}
-          docker run -v ${GITHUB_WORKSPACE}:/kicad --entrypoint kicad-cli kicad/kicad:9.0  \
+          docker run -v $(pwd):/kicad --entrypoint kicad-cli ghcr.io/inti-cmnb/kicad9_auto_full \
             sch export pdf --output "/kicad/${OUTPUT_DIR}/${SCHEMA_NAME_BASE}_${VERSION}.pdf" "/kicad/${SCHEMA_NAME}"    
-          docker run -v ${GITHUB_WORKSPACE}:/kicad --entrypoint kicad-cli kicad/kicad:9.0  \
+          docker run -v $(pwd):/kicad --entrypoint kicad-cli ghcr.io/inti-cmnb/kicad9_auto_full  \
             sch export bom --preset \
             --output "/kicad/${OUTPUT_DIR}/${SCHEMA_NAME_BASE}_bom_${VERSION}.csv" "/kicad/${SCHEMA_NAME}"
 
@@ -70,8 +70,8 @@ jobs:
         run: |
           echo "Generating gerber files for \"${PCB_NAME}\""
           PCB_NAME_BASE=${PCB_NAME%.*}
-          docker run -v ${GITHUB_WORKSPACE}:/kikit --entrypoint icad/kicad:9.0 \
-            bash /kikit/scripts/install_kikit.sh && kikit fab ${FABHOUSE} --no-drc "${PCB_NAME}" .
+          docker run -v $(pwd):/kicad --entrypoint kikit ghcr.io/inti-cmnb/kicad9_auto_full \
+            fab ${FABHOUSE} --no-drc "/kicad/${PCB_NAME}" /kicad
           mv gerbers.zip ${OUTPUT_DIR}/${PCB_NAME_BASE}_gerbers_${VERSION}.zip
 
       - name: Archive artifacts

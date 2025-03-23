@@ -34,7 +34,7 @@ jobs:
         env:
           TITLE_BLOCK_AUTHOR: ${{ vars.PROJECT_AUTHOR }}
           TITLE_BLOCK_REVISION: ${{ github.sha }}
-          TITLE_BLOCK_BASE_REPOSITORY: github.com/${{ github.repository_owner }}
+          TITLE_BLOCK_BASE_REPOSITORY: github.com/${{github.repository}}
           TITLE_BLOCK_REPOSITORY: ${{ github.server_url }}/${{github.repository}}
           TITLE_BLOCK_PROJECT_NAME: ${{ vars.PROJECT_NAME }}
           TITLE_BLOCK_PROJECT_NAME_SHORT: ${{ vars.PROJECT_NAME_SHORT }}
@@ -51,7 +51,7 @@ jobs:
           EXIT_CODE=0
           echo "Running ERC test for \"${SCHEMA_NAME}\""
           SCHEMA_NAME_BASE=${SCHEMA_NAME%.*}
-          docker run -v $(pwd):/kicad --entrypoint kicad-cli kicad/kicad:9.0 \
+          docker run -v $(pwd):/kicad --entrypoint kicad-cli ghcr.io/inti-cmnb/kicad9_auto_full \
             sch erc --output "/kicad/${OUTPUT_DIR}/${SCHEMA_NAME_BASE}.rpt" \
             --format report --exit-code-violations --severity-error \
             "/kicad/${SCHEMA_NAME}" || EXIT_CODE=$?
@@ -87,7 +87,7 @@ jobs:
         env:
           TITLE_BLOCK_AUTHOR: ${{ vars.PROJECT_AUTHOR }}
           TITLE_BLOCK_REVISION: ${{ github.sha }}
-          TITLE_BLOCK_BASE_REPOSITORY: github.com/${{ github.repository_owner }}
+          TITLE_BLOCK_BASE_REPOSITORY: github.com/${{github.repository}}
           TITLE_BLOCK_REPOSITORY: ${{ github.server_url }}/${{github.repository}}
           TITLE_BLOCK_PROJECT_NAME: ${{ vars.PROJECT_NAME }}
           TITLE_BLOCK_PROJECT_NAME_SHORT: ${{ vars.PROJECT_NAME_SHORT }}
@@ -104,7 +104,7 @@ jobs:
           EXIT_CODE=0
           echo "Running DRC test for \"${PCB_NAME}\""
           PCB_NAME_BASE=${PCB_NAME%.*}
-          docker run -v $(pwd):/kicad --entrypoint kicad-cli kicad/kicad:9.0 \
+          docker run -v $(pwd):/kicad --entrypoint kicad-cli ghcr.io/inti-cmnb/kicad9_auto_full \
             pcb drc --output "/kicad/${OUTPUT_DIR}/${PCB_NAME_BASE}.rpt" \
             --format report --schematic-parity --exit-code-violations --severity-error \
             "/kicad/${PCB_NAME}" || EXIT_CODE=$?

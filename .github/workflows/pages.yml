@@ -40,7 +40,7 @@ jobs:
         env:
             TITLE_BLOCK_AUTHOR: ${{ vars.PROJECT_AUTHOR }}
             TITLE_BLOCK_REVISION: ${{ steps.project.outputs.VERSION }}
-            TITLE_BLOCK_BASE_REPOSITORY: github.com/${{ github.repository_owner }}
+            TITLE_BLOCK_BASE_REPOSITORY: github.com/${{github.repository}}
             TITLE_BLOCK_REPOSITORY: ${{ github.server_url }}/${{github.repository}}
             TITLE_BLOCK_PROJECT_NAME: ${{ vars.PROJECT_NAME }}
             TITLE_BLOCK_PROJECT_NAME_SHORT: ${{ vars.PROJECT_NAME_SHORT }}
