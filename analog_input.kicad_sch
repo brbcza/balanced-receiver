@@ -4,6 +4,15 @@
 	(generator_version "9.0")
 	(uuid "45224b61-0b06-41f3-81d6-c4b9fbfa269a")
 	(paper "A4")
+	(title_block
+		(title "${TITLE_BLOCK_PROJECT_NAME}")
+		(date "${TITLE_BLOCK_DATE}")
+		(rev "${TITLE_BLOCK_REVISION}")
+		(company "${TITLE_BLOCK_AUTHOR}")
+		(comment 1 "${TITLE_BLOCK_REPOSITORY}")
+		(comment 8 "${TITLE_BLOCK_PROJECT_NAME_SHORT}")
+		(comment 9 "${TITLE_BLOCK_BASE_REPOSITORY}")
+	)
 	(lib_symbols
 		(symbol "Connector:Conn_01x02_Pin"
 			(pin_names
@@ -1162,107 +1171,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "power:PWR_FLAG"
-			(power)
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#FLG"
-				(at 0 1.905 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "PWR_FLAG"
-				(at 0 3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Special symbol for telling ERC where power comes from"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "flag power"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "PWR_FLAG_0_0"
-				(pin power_out line
-					(at 0 0 90)
-					(length 0)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(symbol "PWR_FLAG_0_1"
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 	)
 	(junction
 		(at 163.83 115.57)
@@ -1293,12 +1201,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7e30589e-0618-44a1-b48c-f54e657c963a")
-	)
-	(junction
-		(at 121.92 95.25)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "8aa71572-9537-494d-ad92-78a3517b6afd")
 	)
 	(junction
 		(at 163.83 74.93)
@@ -1430,16 +1332,6 @@
 	)
 	(wire
 		(pts
-			(xy 118.11 93.98) (xy 118.11 95.25)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "37703028-8e2f-42dd-87f4-7fd418241d7c")
-	)
-	(wire
-		(pts
 			(xy 163.83 74.93) (xy 161.29 74.93)
 		)
 		(stroke
@@ -1457,16 +1349,6 @@
 			(type default)
 		)
 		(uuid "57f38bb4-1fd5-4e37-bdda-fa258b6cb2e2")
-	)
-	(wire
-		(pts
-			(xy 118.11 95.25) (xy 121.92 95.25)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "584da068-4391-4567-aebb-c02490d691f4")
 	)
 	(wire
 		(pts
@@ -2367,72 +2249,6 @@
 			(project "balanced-receiver"
 				(path "/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a/a2301bca-fb76-48bf-8387-0002b51351ca"
 					(reference "C21")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:PWR_FLAG")
-		(at 118.11 93.98 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "3e695f5e-6bf9-4064-841e-0b2a34d42687")
-		(property "Reference" "#FLG01"
-			(at 118.11 92.075 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 118.11 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 118.11 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 118.11 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 118.11 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a223e7b1-d05e-4dcd-864e-07cb09bd9cfc")
-		)
-		(instances
-			(project "balanced-receiver"
-				(path "/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a/a2301bca-fb76-48bf-8387-0002b51351ca"
-					(reference "#FLG01")
 					(unit 1)
 				)
 			)

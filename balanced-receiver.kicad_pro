@@ -60,11 +60,11 @@
       ],
       "drc_exclusions": [
         [
-          "courtyards_overlap|88007500|46185000|32706e84-667c-443a-9553-c24271ee6aee|50c6e5f7-beb6-400e-91a3-5446c56fbd18",
+          "courtyards_overlap|140007500|56185000|32706e84-667c-443a-9553-c24271ee6aee|50c6e5f7-beb6-400e-91a3-5446c56fbd18",
           ""
         ],
         [
-          "courtyards_overlap|88007500|48725000|0d8875ff-068b-4ee2-8790-4617aec69b13|32706e84-667c-443a-9553-c24271ee6aee",
+          "courtyards_overlap|140007500|58725000|0d8875ff-068b-4ee2-8790-4617aec69b13|32706e84-667c-443a-9553-c24271ee6aee",
           ""
         ]
       ],
@@ -261,7 +261,15 @@
   "erc": {
     "erc_exclusions": [
       [
-        "pin_to_pin|1663700|660400|b957b221-651b-4528-9e6e-d2e84c195eaa|a223e7b1-d05e-4dcd-864e-07cb09bd9cfc|/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a/d1b32a66-c979-4735-b7fe-0707cf4b15b3|/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a/d1b32a66-c979-4735-b7fe-0707cf4b15b3|/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a/a2301bca-fb76-48bf-8387-0002b51351ca",
+        "pin_to_pin|2286000|279400|2557589b-d174-4486-9e5b-7a11351e17a5|f42a19d1-7447-48a8-8140-4ad0d86c89f0|/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a|/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a|/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a",
+        ""
+      ],
+      [
+        "pin_to_pin|330200|419100|652cbf01-edaf-4f5f-8f02-ac6f2d669862|745af78d-a6d5-4a61-a6e3-8cdd1d1e0933|/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a/d1b32a66-c979-4735-b7fe-0707cf4b15b3|/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a/d1b32a66-c979-4735-b7fe-0707cf4b15b3|/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a/d1b32a66-c979-4735-b7fe-0707cf4b15b3",
+        ""
+      ],
+      [
+        "pin_to_pin|431800|419100|dfeda112-4eec-4025-8c00-33c318efbf16|2557589b-d174-4486-9e5b-7a11351e17a5|/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a/d1b32a66-c979-4735-b7fe-0707cf4b15b3|/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a/d1b32a66-c979-4735-b7fe-0707cf4b15b3|/6a415962-4bc6-46b3-a4a9-4a4125d0fb6a",
         ""
       ]
     ],
@@ -567,7 +575,7 @@
             "group_by": false,
             "label": "Datasheet",
             "name": "Datasheet",
-            "show": true
+            "show": false
           },
           {
             "group_by": true,
@@ -615,13 +623,19 @@
             "group_by": false,
             "label": "LCSC",
             "name": "LCSC",
-            "show": true
+            "show": false
+          },
+          {
+            "group_by": false,
+            "label": "Sim.Type",
+            "name": "Sim.Type",
+            "show": false
           }
         ],
         "filter_string": "",
         "group_symbols": true,
         "include_excluded_from_bom": false,
-        "name": "lcsc-preset",
+        "name": "default",
         "sort_asc": true,
         "sort_field": "Reference"
       }
@@ -645,7 +659,7 @@
           "group_by": false,
           "label": "Datasheet",
           "name": "Datasheet",
-          "show": true
+          "show": false
         },
         {
           "group_by": true,
@@ -693,7 +707,7 @@
           "group_by": false,
           "label": "LCSC",
           "name": "LCSC",
-          "show": true
+          "show": false
         },
         {
           "group_by": false,
